@@ -1,0 +1,180 @@
+/* Reset básico pra geral ficar redondo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Corpo com background roxão e texto legível */
+body {
+    background-color: #4e0078;
+    /* cor de fundo fallback */
+    background-image: url('https://i.pinimg.com/originals/50/43/75/504375a2183ebb584ef9354989d1ab58.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* ou 'contain' se quiser caber tudo certinho */
+
+    color: #eee;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Título principal com efeito suave */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0070f3;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+h1:hover {
+    text-shadow: 5px 5px 5px rgba(60, 0, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Painel branco com cantos arredondados e sombra */
+.painel {
+    background: #31296b;
+    color: #222;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título do painel */
+.painel h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #0008eb;
+    text-align: center;
+}
+
+/* Linha com inputs lado a lado (RA e Dígito) */
+.linha {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Inputs normais */
+.linha input[type='text'],
+.linha input[type='password'],
+.linha input[type='digito'] {
+    padding: 10px 15px;
+    border: 2px solid #bbb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input RA */
+.linha input[type='text'] {
+    max-width: 200px;
+    flex: 2;
+}
+
+/* Input Dígito */
+.linha input[type='digito'] {
+    max-width: 50px;
+    flex: 1;
+    text-align: center;
+}
+
+/* Input Senha (linha separada) */
+.linha:nth-child(2) {
+    display: block;
+}
+
+.linha:nth-child(2) input {
+    width: 100%;
+}
+
+/* Foco nos inputs */
+.linha input[type='text']:focus,
+.linha input[type='password']:focus,
+.linha input[type='digito']:focus {
+    border-color: #7a4fff;
+    box-shadow: 0 0 8px 2px #7a4fff88;
+    outline: none;
+}
+
+/* Botões lado a lado */
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Botões estilosos */
+button {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: white;
+    background-color: #4f87ff;
+}
+
+button:hover {
+    background-color: #5e3adb;
+    color: white;
+    box-shadow: 0 0 8px 2px #5e3adb88;
+    transform: scale(1.1) translateY(-5px);
+    transition: all 0.25s ease;
+}
+
+button[type='reset'] {
+    background-color: #aaa;
+    color: #222;
+}
+
+button[type='reset']:hover {
+    background-color: #888;
+    color: white;
+}
+
+button[type='submit']:hover {
+    background-color: #5e3adb;
+}
+
+/* Responsividade braba */
+@media (max-width: 400px) {
+    .painel {
+        width: 90%;
+    }
+
+    .linha {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    button {
+        margin: 5px 0;
+    }
+
+    input[type='digito'] {
+        max-width: 100%;
+    }
+}

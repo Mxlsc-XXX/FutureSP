@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FutureSP</title>
+    <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>FutureSP</h1>
+
+        <div class="painel">
+            <h2>Acesse sua conta</h2>
+
+            <form id="form-login">
+                <div class="linha">
+                    <input type="text" name="ra" placeholder="RA" maxlength="9" required />
+                    <input type="digito" name="digito" placeholder="Dígito" maxlength="1" required />
+                </div>
+
+                <div class="linha">
+                    <input type="password" name="senha" placeholder="Senha" required />
+                </div>
+
+                <div class="botoes">
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("form-login");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const ra = form.ra.value;
+            const digito = form.digito.value;
+            const senha = form.senha.value;
+
+            const res = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ra, digito, senha }),
+            });
+
+            const data = await res.json();
+
+            if (data.sucesso) {
+                alert(`Você tem ${data.faltas} faltas.`);
+            } else {
+                alert("Erro ao buscar faltas. Verifique os dados.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
